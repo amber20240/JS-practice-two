@@ -63,3 +63,4 @@ const el5 = document.querySelector("#walk");
 el5.textContent = `${house[1].gowalk(house[1].street)}分`;
 
 
+
