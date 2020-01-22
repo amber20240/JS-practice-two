@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>for 迴圈</h2>
+    <div class="box1">
+        <h3>(一)for迴圈-1的乘法</h3>
+        <ul></ul>
+    </div>
+    <div class="box2">
+        <h3>(二)for迴圈與陣列</h3>
+    </div>
+    <div class="box3">
+        <h3>(三)for迴圈的判斷</h3>
+    </div>
+    <div class="box4">
+        <h3>(四)for迴圈的加總</h3>
+    </div>
+    <div class="box5">
+        <h3>(五)for迴圈的判斷+加扣除</h3>
+    </div>
+    
+</body>
+</html>
+<script>
+//(一)for迴圈-1的乘法
+const el = document.querySelector(".box1 ul");
+var str = "";
+for(var i=1;i<5;i++){
+    str +=`<li>${i} * ${i} = ${i*i}</li>`
+}
+el.innerHTML = str;
+//(二)for迴圈與陣列
+const farm = [
+    {
+        farmer:"賈伯斯",
+        dogs:50
+    },{
+        farmer:"卡斯柏",
+        dogs:50
+    },{
+        farmer:"特斯拉",
+        dogs:100
+    },{
+        farmer:"卡司特",
+        dogs:100
+    }
+]
+const el2 = document.querySelector(".box2");
+const str2 =document.createElement("ul");
+el2.appendChild(str2);
+const el3 = document.querySelector(".box2 ul");
+const str3 =document.createElement("li");
+el3.appendChild(str3);
+let farmLen = farm.length;
+for(let i =0;i < farmLen;i++){
+    let str3 =document.createElement("li");
+    str5 =farm[i].farmer;
+    str3.textContent = str5;
+    el3.appendChild(str3);
+};
+//(三)for迴圈的判斷
+const el15 = document.querySelector(".box3");
+const strnewya = document.createElement("ul");
+el15.appendChild(strnewya);
+for(let i=0;i<farmLen;i++){
+    if(farm[i].dogs >50){
+        let el20 = document.createElement("li");
+        el20.textContent = `第 ${i} 個農場有 ${farm[i].dogs} 條的狗`;
+        let el25=document.querySelector(".box3 ul");
+        el25.appendChild(el20);
+    }
+}
+//(四)for迴圈的加總
+const el5 =document.querySelector(".box4");
+const strnew =document.createElement("p");
+el5.appendChild(strnew);
+const el12=document.querySelector(".box4 p");
+let str7 =0;
+for(var i=0;i<farmLen;i++){
+    str7 +=farm[i].dogs;
+}
+el12.innerHTML = `總數為：${str7}`;
+//(五)for迴圈的判斷+加扣除
+const el25 = document.querySelector(".box5");
+const str25 = document.createElement("ul");
+el25.appendChild(str25);
+for(var i=0;i<farmLen;i++){
+    if(farm[i].dogs >= 50){
+        let str28= document.createElement("li");
+        let el28 = document.querySelector(".box5 ul");
+        str28.textContent=`第 ${i} 個農場有 ${farm[i].dogs} 條的狗 ; 農場租借出20條狗後剩下${farm[i].dogs-20}條狗`;
+        el28.appendChild(str28);
+    }
+}
+</script>
+<style>
+ul{
+    list-style: none;
+}
+p{
+    margin:45px; 
+}
+</style>
