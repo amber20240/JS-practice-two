@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>練習setAttribute / getAttribute / innerHTML / createElement</h1>
+    <h2>(一)setAttribute / getAttribute</h2>
+    <p>使用setAttribute新某屬性的內容</p>
+    <P>(1)新增a連結的屬性和內容</P>
+    <ul>
+        <li class="li1">
+            <a href="#"></a>
+        </li>
+    </ul>
+    <p>(2)調出a連結的內容</p>
+    <ul>
+        <li class="li2">
+        </li>
+    </ul>
+    <P>(3)調出a連結的屬性內的內容</P>
+    <ul>
+        <li class="li3"></li>
+    </ul>
+    <p>(4)調出li的標籤</p>
+    <ul>
+        <li class="li4"></li>
+    </ul>
+    <h2>(二)innerHTML</h2>
+    <p>使用innerHTML組字串帶入</p>
+    <ul class="ul1"></ul>
+    <p>使用innerHTML組字串帶入陣列農夫的名子</p>
+    <ul class="ul2"></ul>
+</body>
+</html>
+<script>
+const el=document.querySelector(".li1 a");
+el.setAttribute("href","https://github.com/amber20240?tab=repositories");
+el.textContent="連結";
+const value1 = el.textContent;
+const el3 =document.querySelector(".li2");
+el3.textContent = value1;
+const attributeText =el.getAttribute("href");
+const el4 = document.querySelector(".li3");
+el4.textContent = attributeText;
+const el5=document.querySelector(".li1");
+console.log(el5.innerHTML);
+const el6=document.querySelector(".li4");
+el6.textContent=el5.innerHTML;
+const el7=document.querySelector(".ul1");
+const name="賈柏斯";
+el7.innerHTML =`<li><a>${name}</a></li>`
+const el8=document.querySelector(".ul1 li a");
+el8.setAttribute("href","https://github.com/amber20240");
+const farm =[
+    {
+        farmer:"bob",
+        dogs:50
+    },{
+        farmer:"dodo",
+        dogs:50
+    },{
+        farmer:"cool",
+        dogs:100
+    },{
+        farmer:"soso",
+        dogs:100
+    }
+]
+const el25=document.querySelector(".ul2");
+let str="";
+for(let i=0;i<farm.length;i++){
+    str +=`<li>農夫的名子:${farm[i].farmer}，養了${farm[i].dogs} 條的狗狗</li>`;
+}
+el25.innerHTML = str;
+</script>
