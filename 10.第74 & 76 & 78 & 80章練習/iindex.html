@@ -34,6 +34,9 @@
     <ul class="ul1"></ul>
     <p>使用innerHTML組字串帶入陣列農夫的名子</p>
     <ul class="ul2"></ul>
+    <h2>(三)creatElement</h2>
+    <p>使用createElement不用組字串帶入陣列農夫的名子</p>
+    <ul class="ul5"></ul>
 </body>
 </html>
 <script>
@@ -76,4 +79,11 @@ for(let i=0;i<farm.length;i++){
     str +=`<li>農夫的名子:${farm[i].farmer}，養了${farm[i].dogs} 條的狗狗</li>`;
 }
 el25.innerHTML = str;
+const el38=document.querySelector(".ul5");
+const str38=document.createElement("li");
+for(let i=0;i<farm.length;i++){
+    let str38=document.createElement("li");  
+    str38.textContent =`農夫的名子:${farm[i].farmer}，養了${farm[i].dogs} 條的狗狗`;
+    el38.appendChild(str38);
+}
 </script>
