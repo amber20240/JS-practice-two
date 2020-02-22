@@ -13,9 +13,20 @@
       <button id="btne">點擊(e)</button>
     </div>
     <div class="box2">
-      <p>監聽到點擊，顯示出你已經點擊的字樣</p>
+      <p>（二）監聽到點擊，顯示出你已經點擊的字樣</p>
       <button id="btn2">(二)事件監聽</button>
       <p>請點擊 : 將會顯示 "<span id="box2Span"></span>"</p>
+    </div>
+    <div class="box3">
+      <h2>(三)綁定事件的語法差異(onclick / click)</h2>
+      <p>onclick綁定多個,只會觸發最後一個事件</p>
+      <button id="btn3">onclik</button>
+      <p>綁定事件1，觸發結果 :<span id="box3Span1"></span></p>
+      <p>綁定事件2，觸發結果 :<span id="box3Span2"></span></p>
+      <p>addEventListener監聽事件,全部的function都會觸發</p>
+      <button id="btny4">addEventListener</button>
+      <p>觸發結果1 :<span id="box3Span3"></span></p>
+      <p>觸發結果2:<span id="box3Span4"></span></p>
     </div>
     <script src="./all.js"></script>
   </body>
