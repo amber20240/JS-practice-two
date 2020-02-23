@@ -32,3 +32,23 @@ btnClick.addEventListener("click", click2, false);
 function click2() {
   el8.textContent = "2";
 }
+const el12 = document.querySelector(".box-inner2");
+el12.addEventListener("click", blueBtn, false);
+function blueBtn() {
+  alert("我是點擊到blue");
+}
+const el13 = document.querySelector(".box-inner");
+el13.addEventListener("click", yellowBtn, false);
+function yellowBtn() {
+  alert("我是點擊到blue後,觸發event bubbling到yellow");
+}
+const el14 = document.querySelector(".box-inner52");
+el14.addEventListener("click", pinkBtn, true);
+function pinkBtn() {
+  alert("因為event capturing,所以會在event capturing的blue後才出現");
+}
+const el15 = document.querySelector(".box-inner5");
+el15.addEventListener("click", blueBtn, true);
+function blueBtn() {
+  alert("我是點擊到event capturing的blue");
+}

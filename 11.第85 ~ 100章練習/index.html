@@ -28,11 +28,65 @@
       <p>觸發結果1 :<span id="box3Span3"></span></p>
       <p>觸發結果2:<span id="box3Span4"></span></p>
     </div>
+    <div class="box4">
+      <h2>(四)Event bubbling / Event capturing</h2>
+      <p>1.Event bubbling</p>
+      <div class="box-inner">
+        <div class="box-inner2"></div>
+      </div>
+      <p>我是按鈕藍的觸發結果:會先出現按鈕 藍 的alert</p>
+      <p>我是按鈕 黃 的觸發結果:出現藍色的alert後再出現按鈕 黃 的alert</p>
+    </div>
+    <div class="box5">
+      <div class="box-inner5">
+        <div class="box-inner52"></div>
+      </div>
+    </div>
     <script src="./all.js"></script>
   </body>
 </html>
 <style>
   .box2 span {
     color: blue;
+  }
+  .box-inner {
+    width: 200px;
+    height: 200px;
+    background: yellow;
+    text-align: center;
+  }
+  .box-inner::before {
+    content: "";
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .box-inner2 {
+    width: 100px;
+    height: 100px;
+    background: blue;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .box-inner5 {
+    width: 200px;
+    height: 200px;
+    background: blue;
+    text-align: center;
+  }
+  .box-inner5::before {
+    width: 0;
+    height: 100%;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .box-inner52 {
+    width: 100px;
+    height: 100px;
+    background: pink;
+    display: inline-block;
+    vertical-align: middle;
   }
 </style>
