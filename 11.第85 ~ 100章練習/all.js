@@ -32,6 +32,8 @@ btnClick.addEventListener("click", click2, false);
 function click2() {
   el8.textContent = "2";
 }
+
+// Event bubbling / Event capturing
 const el12 = document.querySelector(".box-inner2");
 el12.addEventListener("click", blueBtn, false);
 function blueBtn() {
