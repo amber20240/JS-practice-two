@@ -47,10 +47,29 @@ function yellowBtn() {
 const el14 = document.querySelector(".box-inner52");
 el14.addEventListener("click", pinkBtn, true);
 function pinkBtn() {
-  alert("因為event capturing,所以會在event capturing的blue後才出現");
+  alert("因為event capturing,所以會在event capturing的blue後才出現的pink區域");
 }
 const el15 = document.querySelector(".box-inner5");
 el15.addEventListener("click", blueBtn, true);
 function blueBtn() {
   alert("我是點擊到event capturing的blue");
+}
+// stopPropagation / preventDefault
+const el16 = document.querySelector(".box6-inner");
+el16.addEventListener("click", pinkBtn16, false);
+function pinkBtn16(e) {
+  e.stopPropagation();
+  alert("現在點擊到pink區域");
+}
+const el17 = document.querySelector(".box6-out");
+el17.addEventListener("click", yellowBtn16, false);
+function yellowBtn16() {
+  alert("現在點擊到blue區域");
+}
+const el18 = document.querySelector(".box7 a");
+el18.setAttribute("href", "https://www.google.com.tw/");
+el18.addEventListener("click", preventDefaultBtn, false);
+function preventDefaultBtn(e) {
+  e.preventDefault();
+  alert("我是a連結,因為使用preventDefault 不會跳轉其他頁面");
 }

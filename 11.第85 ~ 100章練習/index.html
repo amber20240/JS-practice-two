@@ -42,6 +42,23 @@
         <div class="box-inner52"></div>
       </div>
     </div>
+    <div class="box6">
+      <h2>(五)stopPropagation / preventDefault</h2>
+      <p>1.stopPropagation</p>
+      <p>
+        1-1使用stopPropagation的時候,如果此時點擊pink區域,則不會觸發event
+        Bubbling,所以就不會alert出yellow區域的文字
+      </p>
+      <p></p>
+      <div class="box6-out">
+        <div class="box6-inner"></div>
+      </div>
+      <p>2.preventDefault</p>
+      <p>2-1使用preventDefault的時候,a連結不會跳轉到其他頁面</p>
+      <div class="box7">
+        <a>連結到</a>
+      </div>
+    </div>
     <script src="./all.js"></script>
   </body>
 </html>
@@ -83,6 +100,26 @@
     vertical-align: middle;
   }
   .box-inner52 {
+    width: 100px;
+    height: 100px;
+    background: pink;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .box6-out {
+    width: 200px;
+    height: 200px;
+    background: yellow;
+    text-align: center;
+  }
+  .box6-out::before {
+    width: 0;
+    height: 100%;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .box6-inner {
     width: 100px;
     height: 100px;
     background: pink;
