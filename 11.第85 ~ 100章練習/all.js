@@ -11,6 +11,7 @@ function c1() {
   let el3 = document.querySelector("#box2Span");
   el3.textContent = "有點擊到";
 }
+
 // (三)綁定事件的語法差異(onclick / click)
 const el4 = document.querySelector("#btn3");
 el4.onclick = function() {
@@ -54,6 +55,7 @@ el15.addEventListener("click", blueBtn, true);
 function blueBtn() {
   alert("我是點擊到event capturing的blue");
 }
+
 // stopPropagation / preventDefault
 const el16 = document.querySelector(".box6-inner");
 el16.addEventListener("click", pinkBtn16, false);
@@ -72,4 +74,12 @@ el18.addEventListener("click", preventDefaultBtn, false);
 function preventDefaultBtn(e) {
   e.preventDefault();
   alert("我是a連結,因為使用preventDefault 不會跳轉其他頁面");
+}
+// e.target / e.target.nodeName
+const el19 = document.querySelector(".box8");
+el19.addEventListener("click", targetClick, false);
+const el20 = document.querySelector(".box8 span");
+function targetClick(e) {
+  console.log(e.target);
+  el20.textContent = e.target.nodeName;
 }
