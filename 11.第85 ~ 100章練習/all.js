@@ -83,3 +83,40 @@ function targetClick(e) {
   console.log(e.target);
   el20.textContent = e.target.nodeName;
 }
+// 選單的change
+const farm = [
+  {
+    farmer: "kok",
+    year: 1990,
+    dogs: 2
+  },
+  {
+    farmer: "wow",
+    year: 1991,
+    dogs: 2
+  }
+];
+const el21 = document.querySelector("#select1");
+el21.addEventListener("change", option1, "false");
+const el22 = document.querySelector(".box9 ul");
+function option1(e) {
+  let str = "";
+  for (let i = 0; i < farm.length; i++) {
+    if (e.target.value == farm[i].year) {
+      str += `<li>農夫的名字：${farm[i].farmer}，農夫養了：${farm[i].dogs}狗</li>`;
+    }
+  }
+  el22.innerHTML = str;
+}
+const el23 = document.querySelector("#select2");
+el23.addEventListener("change", t, false);
+const el24 = document.querySelector(".box10");
+function t(e) {
+  for (let i = 0; i < farm.length; i++) {
+    if (e.target.value == farm[i].year) {
+      let str = document.createElement("li");
+      str.textContent = `${farm[i].farmer}`;
+      el24.appendChild(str);
+    }
+  }
+}

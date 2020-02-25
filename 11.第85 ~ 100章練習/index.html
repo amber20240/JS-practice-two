@@ -66,6 +66,33 @@
         <p>e.target可到console.log看</p>
         <p>e.target.nodeName:"<span></span>"</p>
       </div>
+      <div class="box9">
+        <h2>(八)表單改變時觸發使用change - innerHtml</h2>
+        <h3>1.比對選擇的內容，並印出for迴圈的內容，可用innerHTML</h3>
+        <label for="select1">比對出生年,目前選擇到：</label>
+        <select id="select1">
+          <option name="year" value="1990">1990</option>
+          <option name="year" value="1991">1991</option>
+        </select>
+        <p>選擇year後,會比對出同年的農夫名字＆農夫養了幾條狗,如以下：</p>
+        <ul></ul>
+      </div>
+      <div class="box10">
+        <h2>
+          (九)表單改變時觸發使用change - createElement(不可用可看以下說明)
+        </h2>
+        <p>
+          比對選擇的內容，並印出for迴圈的內容，" 不可用
+          "creatElement，因為會一直遞加li上去
+        </p>
+        <p>因為createElement不會清空原本的內容,反而會遞加上去</p>
+        <label for="select2">比對出生年,目前選擇到：</label>
+        <select id="select2">
+          <option value="1990">1990</option>
+          <option value="1991">1991</option>
+        </select>
+        <ul></ul>
+      </div>
     </div>
     <script src="./all.js"></script>
   </body>
