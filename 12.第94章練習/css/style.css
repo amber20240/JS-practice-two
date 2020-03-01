@@ -2,21 +2,19 @@ html {
   height: 100%;
 }
 body {
-  background: url("../img/map.png") no-repeat;
-  background-size: 100% 100%;
-  transition: all 1s cubic-bezier(1, 0.08, 0.73, 0.24);
-  background-position: bottom;
+  background: url("../img/map.png");
 }
 .rocket {
   position: absolute;
   bottom: 0;
+  transition: all 1s cubic-bezier(1, 0.08, 0.73, 0.24);
 }
-.name1 {
+.r1 {
   left: 0;
 }
-.name2 {
+.r2 {
   left: 250px;
 }
-.name3 {
+.r3 {
   left: 500px;
 }

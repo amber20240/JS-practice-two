@@ -8,16 +8,27 @@
     <title>Document</title>
   </head>
   <body>
-    <img src="./img/rocket.png" class="rocket name1" />
-    <img src="./img/rocket.png" class="rocket name2" />
-    <img src="./img/rocket.png" class="rocket name3" />
+    <img src="./img/rocket.png" class="rocket r1" />
+    <img src="./img/rocket.png" class="rocket r2" />
+    <img src="./img/rocket.png" class="rocket r3" />
   </body>
 </html>
 
 <script>
-  var el = document.body;
-  el.addEventListener("keydown", key, false);
-  function key(e) {
+  const el = document.body;
+  el.addEventListener("keydown", good, false);
+  function good(e) {
     console.log(e.keyCode);
+    switch (e.keyCode) {
+      case 65:
+        document.querySelector(".r1").style.bottom = "2000px";
+        break;
+      case 83:
+        document.querySelector(".r2").style.bottom = "2000px";
+        break;
+      case 68:
+        document.querySelector(".r3").style.bottom = "2000px";
+        break;
+    }
   }
 </script>
