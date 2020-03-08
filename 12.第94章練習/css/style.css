@@ -1,20 +1,21 @@
-html {
+html{
   height: 100%;
 }
-body {
+body{
   background: url("../img/map.png");
 }
-.rocket {
+.rocket{
   position: absolute;
   bottom: 0;
   transition: all 1s cubic-bezier(1, 0.08, 0.73, 0.24);
+
 }
-.r1 {
-  left: 0;
+.r1{
+  left:0;
 }
-.r2 {
+.r2{
   left: 250px;
 }
-.r3 {
-  left: 500px;
+.r3{
+  left: 500px; 
 }

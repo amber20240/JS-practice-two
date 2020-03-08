@@ -11,15 +11,79 @@
 
 <body>
   <div class="box">
-    <h2>六角西餐廳 - 顧客點餐篇</h2>
+    <h2>餐廳 - 顧客點餐篇</h2>
     <div class="box-p">
       <p>服務生：Hello，請問您想要點什麼？</p>
       <p>
-        顧客：給我<input type="text" id="text1" />個漢堡，再<input type="text" id="text2" />杯可樂吧！
+        顧客：給我<input type="text" id="humber" />個漢堡，再<input type="text" id="coke" />杯可樂吧！
       </p>
-      <p>服務生：，好的，總計是<em></em>元</p>
+      <p>服務生：<button class="btn">total price</button>，總計是<em id="all"></em>元</p>
     </div>
   </div>
 </body>
 
 </html>
+<script>
+  // blur
+  // btn click
+  const humber = document.querySelector("#humber");
+  const coke = document.querySelector("#coke");
+  humber.addEventListener("blur", noWord, false);
+  coke.addEventListener("blur", noWord, false);
+  function noWord(e) {
+    if (e.target.value == "") {
+      alert("請輸入文字")
+    }
+    return;
+  };
+  const btn = document.querySelector(".btn");
+  btn.addEventListener("click", btnClick, false);
+  const humberPrice = 100;
+  const cokePrice = 20;
+  function btnClick() {
+    const humberNum = parseInt(document.querySelector("#humber").value);
+    const cokeNum = parseInt(document.querySelector("#coke").value);
+    const humberTotal = humberNum * humberPrice;
+    const cokeTotal = cokeNum * cokePrice;
+    const allTotal = humberTotal + cokeTotal;
+    document.querySelector("#all").textContent = allTotal;
+  }
+
+
+
+
+
+  // const humber = 100;
+  // const coke = 50;
+  // const humberNum = document.querySelector("#humber").value;
+  // const cokeNum = document.querySelector("#coke");
+  // const el = document.querySelector("#t1");
+  // const el2 = document.querySelector("#t2");
+  // const btn = document.querySelector(".btn");
+  // btn.addEventListener("click", btnclick, false);
+  // function btnclick() {
+  //   const humberNum = parseInt(document.querySelector("#humber").value);
+  //   console.log(humberNum * humber);
+  //   alert(cokeNum.value)
+  // }
+  // const el = parseInt(document.querySelector("#t1").value);
+  // const el = document.querySelector("#text1");
+  // el.addEventListener("blur", text, false);
+  // const el2 = document.querySelector("#text2");
+  // el2.addEventListener("blur", text, false);
+  // function text(e) {
+  //   console.log(e.target.value)
+  // };
+  // var humbergerNum = document.querySelector("#text1").textContent.value;
+  // var humberCount = parseInt(document.querySelector("#text1").value);
+  // const cokeCount = parseInt(document.querySelector("#text2").value);
+  // console.log(cokeCount);
+  // const el3 = document.querySelector(".btn");
+  // el3.addEventListener("click", total, false);
+  // function total() {
+  // console.log("jo");
+  // console.log(humbergerNum);
+  // console.log(cokeCount);
+  // console.log(humberCount + cokeCount);
+  // }
+// </script>
