@@ -1,21 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
+
 <body id=body>
     <div class="wrap">
         <div class="header">
-            <p>screenX : <span id="screenXId"> </span>  screenY : <span id="screenYId"></span></p>
-            <p>pageX : <span id="pageXId"> </span>  pageY : <span id="pageYId"></span></p>
-            <p>clientX : <span id="clientXId"> </span>  clientY : <span id="clientYId"></span></p>
+            <p>screenX : <span id="screenXId"> </span> screenY : <span id="screenYId"></span></p>
+            <p>pageX : <span id="pageXId"> </span> pageY : <span id="pageYId"></span></p>
+            <p>clientX : <span id="clientXId"> </span> clientY : <span id="clientYId"></span></p>
         </div>
-        <img src="img/cool.png" id="imgId">
+        <img src="./img/cool.png" id="imgId">
     </div>
-    <script src="js/all.js"></script>
 </body>
+
 </html>
+<script>
+    // 先偵測整個body
+    // 讓img能跟著滑鼠移動,前提事要把img固定在body上
+    // 把數值輸入到空格裡
+    // client 視窗    page整個瀏覽器（可以往下捲）  screen整個螢幕
+    // const all = document.body;
+    // const img = document.querySelector("#imgId");
+    // all.addEventListener("mousemove", mouseAll, false);
+    // function mouseAll(e) {
+    //     console.log(e.clientX);
+    //     img.style.top = e.clientX + "px";
+    //     img.style.left = e.clientY + "px";
+    // }
+    var screenX = document.querySelector("#screenXId");
+    var screenY = document.querySelector("#screenYId");
+    var pageX = document.querySelector("#pageXId");
+    var pageY = document.querySelector("#pageYId");
+    var clientX = document.querySelector("#clientXId");
+    var clientY = document.querySelector("#clientYId");
+    var imgMove = document.querySelector("#imgId");
+
+    function mouse(e) {
+        screenX.textContent = e.screenX;
+        screenY.textContent = e.screenY;
+        pageX.textContent = e.pageX;
+        pageY.textContent = e.pageY;
+        clientX.textContent = e.clientX;
+        clientY.textContent = e.clientY;
+        imgMove.style.left = e.clientX + "px";
+        imgMove.style.top = e.clientY + "px";
+    };
+    var el = document.body;
+    el.addEventListener("mousemove", mouse, false);
+</script>
