@@ -1,8 +1,27 @@
+/* css rest */
+body,p{
+  margin: 0;
+}
 html{
   height: 100%;
 }
+body{
+  background: url("../img/dark.png") no-repeat;
+  background-size: cover;
+  height:100%;
+  cursor: none;
+}
+header{
+  color:yellow;
+  text-align:center;
+  text-justify: auto;
+  background: green;
+  padding: 20px;
+}
+.content{
+  display: inline-block;
+  width: 500px;
+}
 #imgId{
-  position: absolute;
-  left: 0;
-  top: 0;
+  position:absolute;
 }
