@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>(一)點選btn1儲存在localStorage，再點選btn2呈現出來</h1>
+    <label for="text">輸入姓名:</label>
+    <input type="text" name="name" id="text">
+    <button id="btn1">請點選,並儲存</button>
+    <button id="btnContent">呈現localStorage內容</button>
+    <p>呈現輸入的內容 : "<em id="em"></em>"</p>
+</body>
+
+</html>
+<script>
+    const btnLocalStorage = document.querySelector("#btn1");
+    btnLocalStorage.addEventListener("click", click, false);
+    function click() {
+        const inputText = document.querySelector("#text").value;
+        localStorage.setItem("name", inputText);
+    };
+    const btnTextContent = document.querySelector("#btnContent");
+    btnTextContent.addEventListener("click", emText, false);
+    const emTextContent = document.querySelector("#em");
+    function emText() {
+        emTextContent.textContent = localStorage.getItem("name");
+    }
+    // const text1 = document.querySelector("#name");
+    // text1.addEventListener("blur", localStorage, false);
+    // function localStorage(e) {
+    //     if (e.target.value == "") {
+    //         alert("請輸入文字")
+    //     }
+    // }
+    // const btn1 = document.querySelector("#btnLocalstorage");
+    // btn1.addEventListener("click", co, false);
+    // function co() {
+    //     alert("hu");
+    //     var str = document.querySelector("#name").value;
+    //     localStorage.setItem("name", str);
+    // }
+</script>
