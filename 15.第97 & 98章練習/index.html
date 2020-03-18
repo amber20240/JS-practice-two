@@ -24,12 +24,25 @@
 <script>
     // 先把背景css做出來
     // 要監聽整個body的mouse effect
-    // 圖片固定在背景上,圖片才知道在client上的哪個位置,沒有固定他就只是罩著文檔流的排版方式排,固定是為了與背景和 mouse做連結
+    // 圖片需與body做連結（與背景圖做連結）,圖片才知道在client上的哪個位置,沒有與body做連結他就只是照著文檔流的排版方式排,連結（absolute）是為了與背景和 mouse做連結
     // 讓圖片跟著client一起動
+    // 把整個螢幕解係度 / 瀏覽器大小 / 視窗大小帶入p
     const img = document.querySelector("#imgId");
     const bodyMouse = document.body;
     bodyMouse.addEventListener("mousemove", mouse, false);
     function mouse(e) {
+        const screenX = document.querySelector("#screenXId");
+        const screenY = document.querySelector("#screenYId");
+        const pageX = document.querySelector("#pageXId");
+        const pageY = document.querySelector("#pageYId");
+        const clientX = document.querySelector("#clientXId");
+        const clientY = document.querySelector("#clientYId");
+        screenX.textContent = `${e.screenX} px ;`;
+        screenY.textContent = `${e.screenY} px`;
+        pageX.textContent = `${e.pageX} px ;`;
+        pageY.textContent = `${e.pageY} px `;
+        clientX.textContent = `${e.clientX} px ;`;
+        clientY.textContent = `${e.clientY} px`;
         img.style.left = e.clientX + "px";
         img.style.top = e.clientY + "px";
     } 
