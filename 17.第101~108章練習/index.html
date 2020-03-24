@@ -9,40 +9,99 @@
 </head>
 
 <body>
-    <h1>(一)點選btn1儲存在localStorage，再點選btn2呈現出來</h1>
-    <label for="text">輸入姓名:</label>
-    <input type="text" name="name" id="text">
-    <button id="btn1">請點選,並儲存</button>
-    <button id="btnContent">呈現localStorage內容</button>
-    <p>呈現輸入的內容 : "<em id="em"></em>"</p>
+    <div class="one">
+        <h1>(一)點選btn1儲存在localStorage，再點選btn2呈現出來</h1>
+        <label for="textInput">輸入姓名：</label>
+        <input type="text" id="textInput">
+        <button id="btnLocalStorageSet">請點選,並存儲到localStorage</button>
+        <button id="btnLocalStorageGet">呈現出localStorage的內容</button>
+        <p>印出input內的姓名：<em id="emText"></em></p>
+    </div>
+    <div class="two">
+        <h1>(二)點選btn3儲存資料庫farms資料，點選btn4顯示farms資料</h1>
+        <button id="farmlocalStorageSetItem">儲存farm的資料到localStorage</button>
+        <button id="farmlocalStoragegetItem">點選呈現farm資料</button>
+        <p>*點選印出localStorage的content:</p>
+        <ul></ul>
+    </div>
 </body>
 
 </html>
 <script>
-    const btnLocalStorage = document.querySelector("#btn1");
-    btnLocalStorage.addEventListener("click", click, false);
-    function click() {
-        const inputText = document.querySelector("#text").value;
-        localStorage.setItem("name", inputText);
-    };
-    const btnTextContent = document.querySelector("#btnContent");
-    btnTextContent.addEventListener("click", emText, false);
-    const emTextContent = document.querySelector("#em");
-    function emText() {
-        emTextContent.textContent = localStorage.getItem("name");
+    // (一)
+    // 先監聽input,如果沒有focus則看有無內容
+    // 點擊btnLocalStorageSet判斷有無文字,有文字則把文字localStorage到e（中央行政中心）  - setItem(key,value)
+    // 點擊btnLocalStorageget判斷有無文字,有文字則把文字localStorage到e（中央行政中心）  - getItem(key)
+    // input value ( 如果是需要數字要 parseInt)/ ul li textContent
+    // JSON.stringify  JSON.parse   本題不用,因為input.value是字串,所以可以直接放入localStorage
+    const inputText = document.querySelector("#textInput");
+    inputText.addEventListener("blur", alertText, false);
+    function alertText(e) {
+        if (e.target.value == "") {
+            alert("請輸入文字")
+        }
     }
-    // const text1 = document.querySelector("#name");
-    // text1.addEventListener("blur", localStorage, false);
-    // function localStorage(e) {
-    //     if (e.target.value == "") {
-    //         alert("請輸入文字")
-    //     }
-    // }
-    // const btn1 = document.querySelector("#btnLocalstorage");
-    // btn1.addEventListener("click", co, false);
-    // function co() {
-    //     alert("hu");
-    //     var str = document.querySelector("#name").value;
-    //     localStorage.setItem("name", str);
-    // }
+    const btnLocalStorageSet = document.querySelector("#btnLocalStorageSet");
+    btnLocalStorageSet.addEventListener("click", btnLocalStorageSetItem, false);
+    function btnLocalStorageSetItem() {
+        const str = inputText.value;
+        localStorage.setItem("name", str);
+    }
+    const btnLocalStorageget = document.querySelector("#btnLocalStorageGet");
+    btnLocalStorageget.addEventListener("click", btnLocalStoragegetItem, false);
+    function btnLocalStoragegetItem() {
+        const emText = document.querySelector("#emText");
+        emText.textContent = localStorage.getItem("name");
+    }
+    // （二）
+    // 有兩個btn,一個是localStorage setItem / localStorageget getItem
+    // 用ul呈現,ul要設定屬性（ setAttribute ）
+    // localStorage.setItem要放入string,所以要經過JSON.stringify字串化
+    // 因為現在localStorage的內容是string 
+    // 所以在localStorage.getItem後要JSON.parse(解係)變成array 
+    // 如果是input就不會是array所以不用JSON.stringify / JSON.parse
+    // input的流程
+    // 拿到value / localStorage.setItem  儲存到 localStorage /  localStorage.getItem 得到 儲存在localStorage的內容
+    // farm array流程
+    // JSON.stringify 整個array(如farm) 字串化 / localStorage.setItem 儲存到 localStorage  /localStorage.getItem 拿到 儲存在localStorage的內容/JSON.parse 文字化
+
+    // 存進去就是要用 字串化  / 存進去後會變成  object /  領出來要用parse  變成 array
+    // 要把farm儲存到localStorage
+    // localStorage 要放stringify 
+    // 所以要把arry變成字串化 
+    // localStorage.setItem(key,value)
+    // 調出localStorage.getItem 現在會是string
+    // 透過 JSON.parse 變成array
+    // createElement document.createElement str放在裡面  textContent appendchild 
+
+    const farm = [{
+        farmer: "good",
+        hourse: 200
+    }, {
+        farmer: "food",
+        hourse: 350
+    }]
+
+    const farmLocalStorageSetItem = document.querySelector("#farmlocalStorageSetItem");
+    const farmLocalStorageGetItem = document.querySelector("#farmlocalStoragegetItem");
+    farmLocalStorageSetItem.addEventListener("click", farmLocalStorageSetItemu, false);
+    farmLocalStorageGetItem.addEventListener("click", farmLocalStorageSetItemt, false);
+    function farmLocalStorageSetItemu() {
+        const farmStringify = JSON.stringify(farm);
+        localStorage.setItem("farmContent", farmStringify);
+    };
+    function farmLocalStorageSetItemt() {
+        console.log(localStorage.getItem("farmContent"));
+        const farmContentString = localStorage.getItem("farmContent");
+        const farmContentArray = JSON.parse(farmContentString);
+        console.log(farmContentArray);
+        const ul = document.querySelector(".two ul");
+        ul.setAttribute("id", "twoId");
+        // const twoLi = document.querySelector("#twoId");
+        for (let i = 0; i < farmContentArray.length; i++) {
+            const str = document.createElement("li");
+            str.textContent = `農夫：${farmContentArray[i].farmer} ; 養的馬兒：${farmContentArray[i].hourse}`;
+            ul.appendChild(str);
+        }
+    };
 </script>
