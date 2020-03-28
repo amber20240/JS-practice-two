@@ -91,7 +91,7 @@ const goodFarm = [{
     farmer: "cool",
     dogs: 50
 }, {
-    farmer: "ya",
+    farmer: "good",
     dogs: 20
 }, {
     farmer: "wowo",
@@ -117,5 +117,50 @@ function clickFarmNumber(e) {
     farmNumberContent.textContent = e.target.dataset.num;
     const farmDogsNumber = document.querySelector(".dogs");
     farmDogsNumber.textContent = e.target.dataset.dogs;
+    console.log()
 }
+// (四)
+// data-set / data-num
+// 前面的ul先印出goodFarm的農夫名稱
+// function(){}
+// 後面的ul印出點到的農場資訊
+// 因為目前只有ul所以用createElement 
+// createElement  document.createElement("li") str textContent appendChild()  裡面
+// innerHTML str＋ 外面  innerHTML會清空裡面的東西
+// dataset 是屬性 就像id 就像class
+//  因為要印出goodFarm的array的資料,可以用createElement
+//  因為要印出goodFarm的array的資料,可以用innerHTML
+//  如果是單存要印出其中一個點擊到的內容,可以用array
+//  如果是要印出點擊的內容一個一個累積上去,用innerHTML
+const ul2=document.querySelector("#ul2");
+function farmUl2(){
+    for(let i=0;i<goodFarm.length;i++){
+        const str=document.createElement("li");
+        str.setAttribute("data-num",`${i}`);
+        //str.setAttribute("data-farmer",`${goodFarm[i].farmer}`);
+        str.textContent=`農場主人：${goodFarm[i].farmer}`;
+        console.log(str);
+        ul2.appendChild(str);
+        // str.textContent=`第${i+1} 個農場的主人：${goodFarm[i].farmer}`;
+
+    }
+}
+farmUl2();
+// 印出點擊內容
+// 有兩種code的方法,其一是沒有註解,其二是註解的（連同上面function）,要記得註解打開要在把沒有註解的給註解
+const ulClick=document.querySelector("#ulClick");
+ulClick.setAttribute("class","ulClick");
+console.log(ulClick);
+ul2.addEventListener("click",ul2Click,false);
+function ul2Click(e){
+    if(e.target.nodeName !== "LI"){return};
+    const str=document.querySelector("li");
+    const num=e.target.dataset.num;
+    const numParseInt = parseInt(num);
+    str.textContent=` 第${numParseInt+1}個農場;${e.target.textContent}`;
+    // str.textContent=` 第${numParseInt+1}個農場;農場主人：${e.target.dataset.farmer}`;
+
+    ulClick.appendChild(str);
+}
+
 
