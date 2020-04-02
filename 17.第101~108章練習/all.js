@@ -162,5 +162,54 @@ function ul2Click(e){
 
     ulClick.appendChild(str);
 }
+// splice(1,1)
+// 把input的值儲存到localStorage (localStorage.setItem)
+// 拿出localStorage的值（）localStorage.getItem
+// 製作刪除的功能
+const text=document.querySelector("#text");
+const button =document.querySelector("#button");
+button.addEventListener("click",btnClick,false);
+function btnClick(){
+    const textC = text.value;
+    // value取出來的值是字串
+    // farm是array所以要JSON.stringify /JSON.parse
+    // localStorage.setItem(key,value);
+    localStorage.setItem("inputTextContent",textC);
+
+}
+// 印出農場資訊
+// splice刪除 
+// splice 是刪除array,而點擊到li裡面的哪一個是透過dataset（data-num）來知道,因為dataset會與array的地幾個相符和
+// splice(從第幾個刪除,刪除幾個)
+// for迴圈印出goodfarm內容
+// 製作li 有兩種方法 
+// createElement  document.createElement str 在裡面  textContent  ul.appendChild（str）
+// innerHTML str 外面（因為會清空） str+  ul.innerHTML=str
+const fiveUl=document.querySelector(".five ul");
+fiveUl.setAttribute("id","fiveUl");
+const fiveUlId=document.querySelector("#fiveUl");
+function setgoodFarm(){
+    let str="";
+    for(let i=0;i<goodFarm.length;i++){
+        // let str= document.createElement("li");
+        // str.textContent=`${goodFarm[i].farmer}`;
+        // str.setAttribute("data-num",`${i}`);
+        // fiveUlId.appendChild(str);
+        str+=`<li data-num="${i}">${goodFarm[i].farmer}</li>`
+    };
+    fiveUlId.innerHTML=str;
+};
+setgoodFarm();
+fiveUlId.addEventListener("click",spliceArray,false);
+function spliceArray(e){
+    if(e.target.nodeName !== "LI"){
+        return
+    };
+    goodFarm.splice("e.target.dataset.num","1");
+    setgoodFarm();
+}
+// 複習push . splice
+// 複習dataset . 複習上一題
+
 
 
