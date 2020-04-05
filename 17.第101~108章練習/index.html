@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    </style>
 </head>
 
 <body>
@@ -33,12 +35,12 @@
         <p>有幾隻狗：<em class="dogs"></em></p>
     </div>
     <div class="four">
-            <h1>(四)Arry 與 data-num/dataset</h1>
-            <h2>原始資料（farm）</h2>
-            <ul id="ul2"></ul>
-            <h2>請點選上面的農場名稱,印出點到的農場資訊</h2>
-            <p>這邊的方法與JS-practice1不同,如果不懂可以看JS-practice1的第一次練習,這邊是JS-practice2</p>
-            <ul id="ulClick"></ul>
+        <h1>(四)Arry 與 data-num/dataset</h1>
+        <h2>原始資料（farm）</h2>
+        <ul id="ul2"></ul>
+        <h2>請點選上面的農場名稱,印出點到的農場資訊</h2>
+        <p>這邊的方法與JS-practice1不同,如果不懂可以看JS-practice1的第一次練習,這邊是JS-practice2</p>
+        <ul id="ulClick"></ul>
     </div>
     <div class="five">
         <h1>(五)splice</h1>
@@ -47,10 +49,34 @@
     </div>
     <div class="six">
         <h2>(五)作業(輸入可印出，也可點刪除)</h2>
-        <input type="text" id="text">
-        <button type="button" id="button" >點擊,儲存到localStorage</button>
+        <input type="text" class="tp">
+        <button type="button" id="button">點擊,儲存到localStorage</button>
+        <ul>
+        </ul>
     </div>
-    <script src="./all2.js"></script>
+    <script src="./all3.js"></script>
 </body>
 
 </html>
+<!-- 刪除註解
+用innerHTML -->
+
+<!-- // parse(localStorage.setItem("todolist"))
+
+// (一)先做出印出原始array的資料 
+// (二)監聽點擊事件 ,抓取input的值
+// (三) 把資料存到localStorage
+
+// 製作function 印出原始array 
+// 1.一開始沒有資料 （ 原始的array )  印出原始的arry到介面 (用for迴圈)
+// 2.現在只有ul 所以要新增dom (li)  新增 dom想到createElement / innerHTML
+// 3.createElement document.createElement str 在裡面 textContent ul.appendChild(str) 不會清空原本的資料, 所以會重複
+// 4.innerHTML str 外面 會清空裡面的內容 textContent 
+// 5.array / object 新增內容
+// array 新增內容  const farm=["farmer","dogs"] farm.push()  
+// object 新增內容 const farm ={farmer: "good1",dogs:50} farm.hourse=50
+// array object const farm=[{farmer:"good1",dogs:50}] const newfarm={farmer:"wowo",dogs:50} farm.push(newfarm) -->
+
+<!-- 一定要記得抓input 內容要下在function內 ,因為browser會在一開始就render全部,但input內容是在render後才填入的 -->
+<!-- 這邊要用innerHTML  因為他會把茲前的資料清空,如果不懂可以試著用createElement ,在用一個一個值帶入了解為什麼不能用createElement -->
+<!-- 記得 localStorage.setItem JSON.stringify localStorage.getItem JSON.parse -->

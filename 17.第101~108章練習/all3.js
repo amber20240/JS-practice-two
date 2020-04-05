@@ -171,7 +171,7 @@ function fourUlClick(e){
 // array 用 for迴圈印出
 // 2.點擊到要刪除
 // 監聽ul,判斷是否為li
-// splice 是刪除array(這邊的array可以先想成是最一開始的arry,在browser render的時候是拿最一開始的array render, 則當splice後,只有這一個區域的li有做重新跑刪除過後的array(有再次callout 有array的function),則一開始browser render 後的其他區域沒有重新跑刪除過後的array(沒有callout 有array的function))
+// splice 是刪除array(這邊的array可以先想成是由中央給function的企劃範本,所以最原始的array並不會被改到,只有function內的arry會被改到,所以可以在function內做刪除)
 // 因為刪除後要印出array ,所以要呼叫第1步驟的function,但第1步驟不能用createElement 因為createElement不會清空原本的內容物
 // 所以改用innerHTML , innerHTML會清空裡面的東西
 // 3.因為刪除array裡面某一項,所以要更新array的資料（如更新刪除的內容,dataset的順序）
@@ -214,43 +214,102 @@ function fiveU(e){
 // 同上備註：原本farm={farmer:"bob"}   farm.dogs=50 farm={farmer:"bob",dogs: 50}
 // 同上備註：array + object  farm=[{farmer:"bob"}]  新增農場有狗  farm[0].dos=50   新增有另一個農場 const addfarm={farmer:"good",dog:50} farm.push(addfarm)  
 
-const happyFarm=[];
-const sixUl=document.querySelector(".six ul");
-sixUl.setAttribute("id","sixUl");
-function startHappyFarm (){
-    let str="";
-    for(let i=0;i<happyFarm.length;i++){
-        str+=`<li style="margin-bottom: 25px;"><button data-num=${i} style="margin-right:25px;">刪除</button>${happyFarm[i].content}</li>`;
-    };
-    sixUl.innerHTML=str;
-}
-startHappyFarm();
+// const happyFarm=[];
+// const sixUl=document.querySelector(".six ul");
+// sixUl.setAttribute("id","sixUl");
+// function startHappyFarm (){
+//     const str="";
+//     for(let i=0;i<happyFarm.length;i++){
+//         str+=`<li data-num="${i}">${happyFarm[i].farmer}</li>`
+//     }
+//     sixUl.innerHTML=str;
+// }
+// startHappyFarm();
 
-const sixBtn=document.querySelector("#button");
-sixBtn.addEventListener("click",btnClick,false);
-function btnClick(){
-    const todo=document.querySelector(".inputText").value;
-    const addHappyFarm={
-        content:todo
-    };
-    happyFarm.push(addHappyFarm);
-    const happyFarmString=JSON.stringify(happyFarm);
-    localStorage.setItem("farm",happyFarmString);
-    const happyFarmLocalStorage=localStorage.getItem("farm");
-    const happyFarmParse=JSON.parse(happyFarmLocalStorage);
-    console.log(happyFarm);
+// const sixBtn=document.querySelector("#button");
+// sixBtn.addEventListener("click",btnClick,false);
+// function btnClick(){
+//     const todo=document.querySelector(".inputText").value;
+//     const addHappyFarm={
+//         content:todo
+//     };
+//     happyFarm.push(addHappyFarm);
+//     const happyFarmString=JSON.stringify(happyFarm);
+//     localStorage.setItem("farm",happyFarmString);
+//     const happyFarmLocalStorage=localStorage.getItem("farm");
+//     const happyFarmParse=JSON.parse(happyFarmLocalStorage);
+//     console.log(happyFarm);
+//     let str="";
+//     for(let i=0;i<happyFarmParse.length;i++){
+//         str+=`<li style="margin-bottom: 25px;"><button style="margin-right:25px;">刪除</button>${happyFarm[i].content}</li>`;
+//     };
+//     console.log(str);
+//     sixUl.innerHTML=str;
+// }
+// const sixbtn=document.querySelector(".six ul li ")
+
+// const color=["yellow","blue"];
+// color.push("pink")
+// console.log(color);
+// const farmu={
+//     farmer: "bob"
+// }
+// farmu.dogs="kiki";
+// console.log(farmu);
+// const farmt=[{
+//     farmer: "gogo",
+//     dogs: 20
+// }]
+// 新增 農場hourse
+// farmt[0].content="h";
+// console.log(farmt);
+// const u={
+//     farmer:"h"
+// };
+// farmt.push(u);
+// console.log(farmt);
+
+
+// (六)
+// 資料  事件 介面
+// todolist  - input btn ul li  splice
+// 1.預設原始array資料  -  資料 
+// 2.製作function 把原始資料印出到ul li (通常一開始沒有資料) / 在function接著抓input 的新的資料更新array
+// 3.把input資料 印出介面(ul li ) 以及 把資料 存到browser 的 loalStorage 
+// 4.splice資料 ＆ 儲存新的 array資料到browser 的localStorage ＆
+
+// 抓dom
+const inputText1 =document.querySelector(".inputText");
+const btn=document.querySelector("#button");
+const sixUl=document.querySelector(".six ul");
+
+// 製作原始array(通常一開始不會有內容-[];當有內容後關掉browser在打開要透拿到browser的localStorage的資料來印出上一次的內容)
+// loaclStorage.setItem("key",value) 因為localStorage只吃string  JSON.string   localStorage.setItem("key") localStorage給出的是string  JSON.parse
+// 這邊是從localStorage拿到上次資料 
+let todolist= JSON.parse(localStorage.getItem("todolistContent"))|| [];
+todo(todolist);
+//  render最一開始的array 以及在下一次打開browser抓取localStorage的資料呈現於介面
+function todo(todolist){
     let str="";
-    for(let i=0;i<happyFarm.length;i++){
-        str+=`<li style="margin-bottom: 25px;"><button data-num=${i} style="margin-right:25px;">刪除</button>${happyFarm[i].content}</li>`;
-    };
-    console.log(str);
+    for(let i =0;i<todolist.length;i++){
+        str+=`<li>${todolist[i].content}</li>`
+    }
     sixUl.innerHTML=str;
-}
-const sixbtn=document.querySelector(".six ul");
-sixbtn.addEventListener("click",btnSplice,false);
-function btnSplice(e){
-    if(e.target.nodeName !== "BUTTON"){return};
-    console.log(happyFarm);
-    happyFarm.splice(e.target.dataset.num,1);
-    startHappyFarm();
+};
+
+// 抓取值 印到介面 也localStorage到browser的localStorage 要記得JSON.stringify
+btn.addEventListener("click",addtodo,false);
+function addtodo(){
+    const inputTextContent=document.querySelector(".tp").value;
+    const newtodo={
+        content:inputTextContent
+    };
+    todolist.push(newtodo);
+    let str="";
+    for(let i =0 ;i<todolist.length;i++){
+       str+=`<li>${todolist[i].content}</li>`;
+    }
+    sixUl.innerHTML=str;
+    const todolistStringify=JSON.stringify(todolist);
+    localStorage.setItem("todolistContent",todolistStringify);
 }
