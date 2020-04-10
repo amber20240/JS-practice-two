@@ -207,7 +207,7 @@ function fiveU(e){
 // 7.localStorage.setItem("key",value)   JSON.string   localStorage.setItem("key") JSON.parse
 // 8.JSON.string (因為localStorage只吃string)   JSON.string（因為localStorage只給string,透過JSON.parse可以變成array）
 // 備註：setAttribute（"data-num",""） 可建立屬性
-// 備註：iinput的value不能 code在function外,因為browser render的時候,input內還沒有文字,如果value code在function外browser render會同步取值,此時input內還沒有值,值是在input render後才填進去,所以value要code在監聽的function內,才取的到值
+// 備註：input的value不能 code在function外,因為browser render的時候,input內還沒有文字,如果value code在function外browser render會同步取值,此時input內還沒有值,值是在input render後才填進去,所以value要code在監聽的function內,才取的到值
 // 備註：array 新增內容  array push 
 // 同上備註：原本farm=["bob","coco"]   farm.push("pink")  farm=["bob","coco"]
 // 同上備註：object 新增內容 
@@ -279,37 +279,90 @@ function fiveU(e){
 // 4.splice資料 ＆ 儲存新的 array資料到browser 的localStorage ＆
 
 // 抓dom
-const inputText1 =document.querySelector(".inputText");
-const btn=document.querySelector("#button");
-const sixUl=document.querySelector(".six ul");
+
 
 // 製作原始array(通常一開始不會有內容-[];當有內容後關掉browser在打開要透拿到browser的localStorage的資料來印出上一次的內容)
 // loaclStorage.setItem("key",value) 因為localStorage只吃string  JSON.string   localStorage.setItem("key") localStorage給出的是string  JSON.parse
 // 這邊是從localStorage拿到上次資料 
-let todolist= JSON.parse(localStorage.getItem("todolistContent"))|| [];
-todo(todolist);
+
 //  render最一開始的array 以及在下一次打開browser抓取localStorage的資料呈現於介面
-function todo(todolist){
-    let str="";
-    for(let i =0;i<todolist.length;i++){
-        str+=`<li>${todolist[i].content}</li>`
-    }
-    sixUl.innerHTML=str;
-};
+// function todo(todolist){
+//     let str="";
+//     for(let i =0;i<todolist.length;i++){
+//         str+=`<li><button data-num="${i}" id="btnSplice" style="margin-right: 10px">刪除</button>${todolist[i].content}</li>`
+//     }
+//     console.log(str);
+//     sixUl.innerHTML=str;
+// };
 
 // 抓取值 印到介面 也localStorage到browser的localStorage 要記得JSON.stringify
-btn.addEventListener("click",addtodo,false);
-function addtodo(){
-    const inputTextContent=document.querySelector(".tp").value;
-    const newtodo={
-        content:inputTextContent
-    };
-    todolist.push(newtodo);
-    let str="";
-    for(let i =0 ;i<todolist.length;i++){
-       str+=`<li>${todolist[i].content}</li>`;
+// btn.addEventListener("click",addtodo,false);
+// function addtodo(){
+//     const inputTextContent=document.querySelector(".tp").value;
+//     const newtodo={
+//         content:inputTextContent
+//     };
+//     todolist.push(newtodo);
+//     let str="";
+//     for(let i =0 ;i<todolist.length;i++){
+//        str+=`<li>${todolist[i].content}</li>`;
+//     }
+//     sixUl.innerHTML=str;
+//     const todolistStringify=JSON.stringify(todolist);
+//     localStorage.setItem("todolistContent",todolistStringify);
+// }
+// splice 刪除
+// splice("第幾個","刪除幾個")
+// 兩件事
+// 一開始input 沒有任何問字
+// 再次打開browser 有內容 localStorage
+    // JSON.stringify()
+    // localStorage.setItem("key","value")
+    // localStorage.getItem("key")
+    // JSON.parse
+// innerHTML / createElement 
+    // innerHTML 
+        // str 會清除裡面的內容 str外面 str+ textContent ul.innerHTML=str
+    // createElement 
+        // str 不會清除裡面的內容 所以會一直重複 str 裡面  textContent ul.appendChild(str)
+// dom
+
+
+const inputTextAddToDo=document.querySelector(".tp");
+const btn=document.querySelector("#button");
+const sixUl=document.querySelector(".six Ul");
+
+let todolist = JSON.parse(localStorage.getItem("addtodolist"))||[];
+function addtodolist(){
+    let str ="";
+    for(let i=0;i<todolist.length;i++){
+        str+=`<li><button data-num="${i}" style="margin: 10px">刪除</button>${todolist[i].content}</li>`
     }
-    sixUl.innerHTML=str;
-    const todolistStringify=JSON.stringify(todolist);
-    localStorage.setItem("todolistContent",todolistStringify);
+    sixUl.innerHTML= str;
+};
+addtodolist(todolist);
+
+btn.addEventListener("click",inputTextToDo,false);
+function inputTextToDo(){
+    const textAddToDo=inputTextAddToDo.value;
+    const addtodo = {
+        content:textAddToDo
+    };
+    todolist.push(addtodo);
+    console.log(todolist);
+    const todoStringify = JSON.stringify(todolist);
+    localStorage.setItem("addtodolist",todoStringify);
+    addtodolist(todolist);
 }
+// 設定屬性
+// setAttribute("id","good")
+sixUl.addEventListener("click",todolistSplice,false);
+function todolistSplice(e){
+    if(e.target.nodeName !=="BUTTON"){return}; 
+    const num=e.target.dataset.num;
+    todolist.splice(num,1);
+    addtodolist(todolist);
+    const todolistStringify =JSON.stringify(todolist);
+    localStorage.setItem("addtodolist",todolistStringify);
+}
+
