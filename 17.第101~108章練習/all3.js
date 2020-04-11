@@ -329,6 +329,7 @@ function fiveU(e){
 
 
 const inputTextAddToDo=document.querySelector(".tp");
+console.log(inputTextAddToDo);
 const btn=document.querySelector("#button");
 const sixUl=document.querySelector(".six Ul");
 
@@ -343,17 +344,34 @@ function addtodolist(){
 addtodolist(todolist);
 
 btn.addEventListener("click",inputTextToDo,false);
+inputTextAddToDo.addEventListener("keydown",inputTextToDoKeydown,false);
 function inputTextToDo(){
+    if(inputTextAddToDo.value == ""){return};
     const textAddToDo=inputTextAddToDo.value;
     const addtodo = {
         content:textAddToDo
     };
     todolist.push(addtodo);
-    console.log(todolist);
     const todoStringify = JSON.stringify(todolist);
     localStorage.setItem("addtodolist",todoStringify);
     addtodolist(todolist);
 }
+function inputTextToDoKeydown(e){
+    if(e.keyCode !== 13){
+        return
+    }else if(inputTextAddToDo.value == ""){
+        return
+    };
+    const textAddToDo=inputTextAddToDo.value;
+    const addtodo = {
+        content:textAddToDo
+    };
+    todolist.push(addtodo);
+    const todoStringify = JSON.stringify(todolist);
+    localStorage.setItem("addtodolist",todoStringify);
+    addtodolist(todolist);
+}
+
 // 設定屬性
 // setAttribute("id","good")
 sixUl.addEventListener("click",todolistSplice,false);
