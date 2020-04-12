@@ -383,4 +383,46 @@ function todolistSplice(e){
     const todolistStringify =JSON.stringify(todolist);
     localStorage.setItem("addtodolist",todolistStringify);
 }
+// JSON.stringify()
+// loaclStorage.setItem("key","value")
+// loaclStorage.setItem("key")
+// JSON.parse()
+// e.keyCode keydown
+
+// (七)
+// 有input btn ul
+// 資料 事件 介面
+// 1.建立array
+// 2.抓取input的value放到array
+    // 複習array / object 新增值
+// 3.把array印到ul,ul要給一個屬性
+// 複習createEelment / innerHTML
+// createElement 不會清空,會一直重複 str 裡面  document.createElement str textContent ul.appendChild(str)
+// innerHTML  會清空裡面的,不會一直重複 str外面 str+ ul.innerHTML=str
+let goodfarmYa=JSON.parse(localStorage.getItem("addTextContent")) || [];
+const inputTextSeven=document.querySelector("#inputTextSeven");
+const btnSeven = document.querySelector("#sevenBtn");
+const ulSeven =document.querySelector(".seven ul");
+console.log(ulSeven);
+function add(goodfarmYa){
+    let str="";
+    for(let i=0;i<goodfarmYa.length;i++){
+        str+=`<li>${goodfarmYa[i].content}</li>`
+    }
+    ulSeven.innerHTML=str;
+    console.log(ulSeven);
+}
+add(goodfarmYa);
+btnSeven.addEventListener("click",addtodo,false)
+function addtodo(){
+    const inputValue=inputTextSeven.value;
+    const newtodo={
+        content: inputValue
+    };
+    goodfarmYa.push(newtodo);
+    console.log(goodfarmYa);
+    add(goodfarmYa);
+    const goofarmYaStringify = JSON.stringify(goodfarmYa);
+    localStorage.setItem("addTextContent",goofarmYaStringify );
+}
 

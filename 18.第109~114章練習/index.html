@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <style>
+    .image2{
+      background: url("https://i.picsum.photos/id/237/200/300.jpg") no-repeat top left;
+      background-size: contain;
+    }
+  </style> -->
+</head>
+<body>
+  <!-- ------------------ 做兩個頁面（透過點擊按鈕跳轉回到上一頁 / 透過跳轉到下一頁）------------------ -->
+  <div>
+  <button id="nextOne">到下一頁（1）</button>
+  <button id="nextHistory">到下一頁</button>
+  <p>因為browser(瀏覽器沒有倒下一頁的記錄,所以要先點button(倒下一頁（1）))</p>
+</div>
+<div>
+  <button id="print">print</button>
+</div>
+<div>
+  <button id="nextPageGoogle">跳轉到另一分頁（不會開新分頁）</button>
+  <p >目前位置：<em id="googleLocation"></em></p>
+</div>
+<div>
+    <button id="nextPageGoogleNew">跳轉到另一分頁（會開新分頁）</button>
+    <p >目前位置：<em id="googleLocationNew"></em></p>
+  </div>  
+  <div >
+    <img src="./dog.png" class="image2">
+  </div>
+  <script src="./all.js"></script>
+</body>
+</html>
