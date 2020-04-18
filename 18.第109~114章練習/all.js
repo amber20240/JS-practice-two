@@ -52,3 +52,38 @@ function imgSize(){
   img.style.width=`${window.innerwidth}px`;
   img.style.height=`${window.innerHeight}px`;
 }
+
+// 練習XML / readyState 順序 
+// XML 
+
+// const xhr=new XMLHttpRequest();
+//  向伺服器請求一個 可延伸的標記語言
+// xhr.open("get","url",false)
+// false 同步  
+// 等資料回傳回來才繼續跑JS的code
+// true非同步
+// 沒有等資料回傳回來就繼續跑ｊｓ下面的code
+// xhr.send(null)
+// 因為沒有要傳送資料給後端,所以是用null
+
+//  ready state
+
+// 0  const xhr=new XMLHttpRequest()  向伺服器請求一個可延伸標記的語言 
+// 1  打開xhr.open("get","url",false)  
+// 2  xhr.send(null)
+// 3  loading 
+// 4  收到資料
+
+
+// const xhr=new XMLHttpRequest();
+// 向伺服器請求一個可延伸的標記語言
+// xhr.open("get","url",false)
+// 打開xhr.open("get","url",false)
+// xhr.send(null)
+// 向後端傳送值,但因為現在是要向後端取值,所以不用給值（null）
+// const y= 2;
+// console.log(y);
+// let i=5;
+// console.log(i);
+// i=3;
+// console.log(i);
