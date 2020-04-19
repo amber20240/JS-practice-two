@@ -9,45 +9,11 @@
 <body>
     <h2>（一）假裝後端的資料 JSON 格式 </h2>
     <p class="p1"></p>
+    <!-- 是否有真實的拿到資料 200 404 -->
+    <h2>(二)是否有拿到資料查詢（status）</h2>
+    <p>印出有拿到資料 : <em id="emCatchData"></em></p>
+    <p>印出沒有拿到資料 : <em id="emNoCatchData"></em></p>
+   <button id="btn">too</button>
+    <script src="./all.js"></script>
 </body>
 </html>
-<script>
-
-  //01:20 
-  // XML 流程
-  // XML 看狀態單字 XML.responseText XML.readyState XML.
-  // 在 netWork
-
-  // const xhr= new XMLHttpRequest();
-  //  向伺服器請求一個可延伸的標記與語言
-  // xhr.open("get","url",false)
-  //  設定一個xhr,open("get","url",false)
-  //  grt取得資料  
-  //  false 同步  true 非同步
-  //  false 等撈到後端資料才開始跑ｊｓ下面的資料
-  //  true 非同步沒有等撈到資料就繼續跑JS下面的code
-  // xhr.send(null)
-  // 傳送資料給後端,但因為我們現在要取值,所以是null
-
-  // readyState 順序
-    // 0 const xhr=newXMLHttpsRequest(); 請求伺服器建立一個可延伸的標記語言
-    // 1 xhr.open("get","url",false) ; 設定一個 xhr.open("get","url",false)
-    // 2 xhr.send(null);偵測資料以傳送給後端
-    // 3 loading
-    // 4 拿到資料
-
-    // 先取到值
-  const p1=document.querySelector(".p1");
-  const xhr = new XMLHttpRequest();
-  xhr.open("get","https://hexschool.github.io/ajaxHomework/data.json",false);
-  xhr.send(null);
-  const array1=JSON.parse(xhr.responseText);
-  console.log(array1);
-  function addtext (){
-    console.log(array1[0].name);
-    p1.textContent=array1[0].name;
-    console.log(xhr.readyState);
-  }
-  addtext();
-    // 觀察readyState 
-</script>
