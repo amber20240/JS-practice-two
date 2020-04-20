@@ -23,25 +23,23 @@
 
     // 先取到值
 
-
+    
  // 第一個true
  const xhr=new XMLHttpRequest();
  const p1=document.querySelector(".p1");
  xhr.open("get","https://hexschool.github.io/ajaxHomework/data.json",true);
  xhr.send(null);
-
  xhr.onload=function (){
    const str=JSON.parse(xhr.responseText)
    p1.textContent =str[0].name;
  }
-
+ 
 // xhr.readyState 情況
 // 現在要印出狀態有沒有拿到值
 const emCatchData=document.querySelector("#emCatchData");
 const emNoCatchData=document.querySelector("#emNoCatchData");
 console.log(emCatchData);
 console.log(emNoCatchData);
-
 const xhrEmCatchData = new XMLHttpRequest();
 xhrEmCatchData.open("get","https://hexschool.github.io/ajaxHomework/data.json",true);
 xhrEmCatchData.send(null);
@@ -49,11 +47,36 @@ xhrEmCatchData.onload=function (){
   emCatchData.textContent=xhrEmCatchData.status;
 };
 const xhremNoCatchData=new XMLHttpRequest();
-xhremNoCatchData.open("get","https://hexschool.github.io/ajaxHomework/newdata.json",true);
+xhremNoCatchData.open("get","https://hexschool.github.io/ajaxHomework/data.json",true);
 xhremNoCatchData.send(null);
-console.log(xhremNoCatchData.state);
+console.log(xhremNoCatchData.status);
 xhremNoCatchData.onload=function(){
   emNoCatchData.textContent = xhremNoCatchData.status;
 }
+// 10:31
+// 用判斷來印出資料,如果不是則印出錯誤
+const emDataYes=document.querySelector("#emDataYes");
+const emDataNo=document.querySelector("#emDataNo");
+const xhrDataIfYes  = new XMLHttpRequest();
+const xhrDataIfNo =new XMLHttpRequest();
+xhrDataIfYes.open("get","https://hexschool.github.io/ajaxHomework/data.json",true);
+xhrDataIfYes.send(null);
+xhrDataIfYes.onload=function(){
+  if(xhrDataIfYes.status == 200){
+    const str=JSON.parse(xhrDataIfYes.responseText);
+    emDataYes.textContent=str[0].name;
+  }else{
+    alert("沒有接收到資料")
+  }
+}
+xhrDataIfNo.open("get","https://hexschool.github.io/ajaxHomework/newdata.json",true);
+xhrDataIfNo.send(null);
 
+xhrDataIfNo.onload=function(){
+  if(xhrDataIfNo.status == 200){
+    emDataNo.textContent="找到答案"
+  }else{
+    emDataNo.textContent="沒有拿到值"
+  }
+}
 
