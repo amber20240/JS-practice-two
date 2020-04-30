@@ -49,11 +49,10 @@ xhrEmCatchData.onload=function (){
 const xhremNoCatchData=new XMLHttpRequest();
 xhremNoCatchData.open("get","https://hexschool.github.io/ajaxHomework/data.json",true);
 xhremNoCatchData.send(null);
-console.log(xhremNoCatchData.status);
 xhremNoCatchData.onload=function(){
   emNoCatchData.textContent = xhremNoCatchData.status;
 }
-// 10:31
+// 17:01
 // 用判斷來印出資料,如果不是則印出錯誤
 const emDataYes=document.querySelector("#emDataYes");
 const emDataNo=document.querySelector("#emDataNo");
@@ -61,9 +60,11 @@ const xhrDataIfYes  = new XMLHttpRequest();
 const xhrDataIfNo =new XMLHttpRequest();
 xhrDataIfYes.open("get","https://hexschool.github.io/ajaxHomework/data.json",true);
 xhrDataIfYes.send(null);
+console.log(xhrDataIfYes);
 xhrDataIfYes.onload=function(){
   if(xhrDataIfYes.status == 200){
     const str=JSON.parse(xhrDataIfYes.responseText);
+    console.log(str);
     emDataYes.textContent=str[0].name;
   }else{
     alert("沒有接收到資料")
@@ -79,4 +80,5 @@ xhrDataIfNo.onload=function(){
     emDataNo.textContent="沒有拿到值"
   }
 }
+
 
