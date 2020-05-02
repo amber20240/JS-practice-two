@@ -10,3 +10,11 @@ xhr.onload=function (){
   console.log(xhr.status);
   console.log(xhr.responseText);
 }
+
+addeventListener
+const el =document.querySelector("#code");
+el.addEventListener("click",function,false)
+function(){}
+el.onload=function (){
+
+}
