@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    h2 {
+      color: blue;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>AJAX應用</h1>
+  <div class="get">
+    <h2>API服務 - 從後端拿資料 - get </h2>
+    <p>xhr.responseText(是否有拿到資料)：<em id="emGet"></em></p>
+  </div>
+  <div class="post_urlencoded">
+    <h2>API服務 - 註冊 - post - application/x-www-form-urlencoded 格式</h2>
+    <label for="accountUrlencoded">account:</label>
+    <input type="text" name="account" id="accountUrlencoded">
+    <label for="passwordUrlencoded">password:</label>
+    <input type="text" name="password" id="passwordUrlencoded">
+    <input type="submit" value="submit" id="submitUrlencoded">
+    <p>是否有拿到資料：<em id="emUrlencodedYesNo"></em></p>
+    <p>xhr.responseText(拿到資料)：<em id="emUrlencodedResponseText"></em></p>
+    <p>xhr.readyState(目前到什麼階段0~4):<em id="emUrlencodedReadyState"></em></p>
+    <p>xhr.status(有無拿到資料):<em id="emUrlencodedStatus"></em></p>
+  </div>
+  <div class="post_JSON">
+    <h2>API服務 - 註冊 - post - application/JSON格式</h2>
+    <label for="accountJSON">account:</label>
+    <input type="text" name="accountJSON" id="accountJSON">
+    <label for="passwordJSON">password:</label>
+    <input type="text" name="passwordJSON" id="passwordJSON">
+    <input type="submit" value="submit" id="submitJSON">
+    <p>是否有拿到資料：<em id="emJSONYesNo"></em></p>
+    <p>xhr.responseText(拿到資料)：<em id="emJSONResponseText"></em></p>
+    <p>xhr.readyState(目前到什麼階段0~4):<em id="emJSONReadyState"></em></p>
+    <p>xhr.status(有無拿到資料):<em id="emJSONStatus"></em></p>
+  </div>
+  <div class="postSingIn">
+  <h2>API服務 - 登入 - post - application/JSON格式</h2>
+  <label for="accountSignIn">account:</label>
+  <input type="text" name="accountSignIn" id="accountSignIn">
+  <label for="passwordSignIn">password:</label>
+  <input type="text" name="passwordSignIn" id="passwordSignIn">
+  <input type="submit" value="submit" id="submitSignIn">
+  <p>是否signIn：<em id="signInYesNo"></em></p>
+  <p>xhr.responseText(拿到資料)：<em id="signInResponseText"></em></p>
+  <p>xhr.readyState(目前到什麼階段0~4):<em id="signInReadyState"></em></p>
+  <p>xhr.status(有無拿到資料):<em id="signInStatus"></em></p>
+</div>
+  <script src="./all.js"></script>
+</body>
+
+</html>

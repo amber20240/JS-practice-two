@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -23,6 +23,45 @@
   <input type="text" name="password2" id="password2">
   <input type="submit" value="submit" id="submit2">
   <p>是否註冊成功：<em id="em2"></em></p>
+  <script src="./all.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    h2{
+      color: blue;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <!-- AJAX應用 -->
+  <!-- get 從後端拿資料-->
+  <h1>AJAX應用</h1>
+  <h2>get 向後端拿資料</h2>
+  <p>拿到資料：<em id="get"></em></p>
+  <!-- post - urlencoded 給後端資料-->
+  <h2>post - encoded 的格式傳給後端 , 確認帳號有無其他人用</h2>
+  <!-- name是後端的名稱, 也是url的名稱 -->
+  <label for="account">account:</label>
+  <input type="text" name="account" id="account">
+  <label for="password">password:</label>
+  <input type="text" name="password" id="password">
+  <input type="submit" value="submit" id="submit">
+  <p>有無確認到帳號是否重複：<em id="post1"></em></p>
+  <!-- post - JSON格式-->
+  <h2>post - JSON 的格式傳給後端 , 確認帳號有無其他人用</h2>
+  <label for="accountJSON">account:</label>
+  <input type="text" name="accountJSON" id="accountJSON">
+  <label for="passwordJSON">password:</label>
+  <input type="text" name="passwordJSON" id="passwordJSON">
+  <input type="submit" value="submit" id="submitJSON">
+  <p>有無確認到帳號是否重複：<em id="post2"></em></p>
   <script src="./all.js"></script>
 </body>
 </html>
