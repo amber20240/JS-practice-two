@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- input name 是給後端資料呈現的名稱,網址的名稱也是用name呈現 -->
+  <h2>AJAX - post - practice - callbackData</h2>
+  <label for="account">account:</label>
+  <input type="text" name="account" id="account">
+  <label for="password">password:</label>
+  <input type="password" name="password" id="password">
+  <input type="submit" value="submit" id="submit">
+  <p>xhr.readyState（是否有傳送到後端驗證）:<em id="readyState"></em></p>
+  <p>xhr.responseText（是否有收到後端傳回來的資料）: <em id="responseText"></em></p>
+  <p>xhr.status（是否有開啟CORS）:<em id="status"></em></p>
+  <p>是否驗證到後端有無重複帳號:<em id="yesOrNo"></em></p>
+  <script src="./all.js"></script>
+</body>
+</html>
